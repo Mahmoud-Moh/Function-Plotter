@@ -1,6 +1,6 @@
 # Plotter Application with PySide2 and Matplotlib
 
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/5e064cca-57ec-43b3-a539-f4511154068d" width="600" height="600">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/554c61e4-2a4e-4e04-927a-4de3cb88e9bb" width="600" height="600">
 
 ## Introduction
 

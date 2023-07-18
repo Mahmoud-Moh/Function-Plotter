@@ -1,6 +1,6 @@
 # Plotter Application with PySide2 and Matplotlib
 
-![Plotter](https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/f0de69c8-aefa-4175-9a7c-c2930a614be3)
+!(https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/f0de69c8-aefa-4175-9a7c-c2930a614be3)
 
 ## Introduction
 

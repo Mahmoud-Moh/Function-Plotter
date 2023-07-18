@@ -6,7 +6,7 @@ from matplotlib.figure import Figure
 import matplotlib 
 import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from pyside_v1 import *
+from main import *
 
 @pytest.fixture
 def app(qtbot):

@@ -4,133 +4,15 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
     QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
-import sys
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-
-
-
-class InputValidation: 
-    def __init__(self, eqn, Xmin, Xmax): 
-        """
-        Initialize the InputValidation object.
-
-        Parameters:
-            eqn (str): The input equation.
-            Xmin (str): The minimum value of X.
-            Xmax (str): The maximum value of X.
-
-        Returns:
-            None
-        """
-        self.eqn = eqn 
-        self.Xmin = Xmin 
-        self.Xmax = Xmax
-        self.eqn = self.eqn.replace("x^", "x**")    
-         
-    
-    def validate_numbers(self): 
-        """
-        This function validates Xmin, Xmax are valid float values.
-
-        Parameters:
-            Xmin (str), Xmax (str): raw input of Xmin, Xmax entries.
-
-        Returns:
-            int: 0 if ok, 1 if exception happened
-            error messsage: if 1 returned in first parameter, error message contains the 
-            message that should be showed to user.
-        """
-        try: 
-            Xmin = float(self.Xmin)
-            Xmax = float(self.Xmax)
-        except: 
-            if self.Xmin == "" or self.Xmax == "":
-                return 1, "Please enter Xmin and Xmax."
-            elif not isinstance(self.Xmin, (int, float)) or not isinstance(self.Xmax, (int, float)): 
-                return 1, "Xmin and Xmax should be Numbers."
-        return 0, None 
-    
-    def validate_eqn(self):
-        """
-        This function validates Equation.
-
-        Returns:
-            int: 0 if ok, 1 if exception happened
-        """
-        try: 
-            x=1
-            val = eval(self.eqn)
-        except: 
-            return 1, "Enter Function correctly, click the i button to read the guidelines."
-        return 0, None
-    
-    def validate(self):
-        """
-        Validate the equation and numbers.
-
-        Returns:
-            tuple: A tuple containing:
-                int: 0 if validation is successful, 1 if an exception occurred.
-                str: An error message if 1 is returned, containing the message to show to the user.
-        """ 
-        state1, message1 = self.validate_eqn()
-        state2, message2 = self.validate_numbers()
-
-        if state2: 
-            return 1, message2
-        elif state1: 
-            return 1, message1
-        else: 
-            return 0, None 
-
-class Plotter: 
-    def __init__(self, eqn, Xmin, Xmax, ax, canvas):
-        """
-        Initialize the Plotter object.
-
-        Parameters:
-            eqn (str): The input equation.
-            Xmin (str): The minimum value of X.
-            Xmax (str): The maximum value of X.
-            ax: The axes object for plotting.
-            canvas: The canvas for drawing the plot.
-
-        Returns:
-            None
-        """ 
-        self.no_of_points = 100
-        self.eqn = eqn
-        self.eqn = self.eqn.replace("x^", "x**")    
-        self.ax = ax
-        self.canvas = canvas
-        self.points_x = np.linspace(Xmin, Xmax, self.no_of_points)
-    
-    def plot(self):
-        """
-        Plot the graph of the equation.
-
-        Returns:
-            None
-        """ 
-        self.ax.cla()
-        y = [0] * self.no_of_points
-        for i in range(self.no_of_points): 
-            x = self.points_x[i]
-            y[i] = eval(self.eqn)
-        self.ax.plot(self.points_x, y, color='y')
-        self.canvas.draw()
-
-
-
-
 class DarkThemeWidget(QWidget):
-    def __init__(self, window_width):
+    def __init__(self, viewModel, window_width):
         super().__init__()
         self.window_width = window_width
+        self.viewModel = viewModel
         self.initUI()
     
     def initUI(self):
@@ -267,7 +149,6 @@ class DarkThemeWidget(QWidget):
         #main_widget.setStyleSheet("background-color: (50, 50, 50);")
         #Main 
         fig, ax, canvas = self.form_plotter()
-        self.canvas = canvas
         self.canvas.draw()
         font = QFont()
         font.setPointSizeF(18)
@@ -418,28 +299,11 @@ class DarkThemeWidget(QWidget):
         ax.spines['right'].set_visible(False)
 
         canvas.setStyleSheet("background-color: transparent;")
+        self.fig = fig
+        self.canvas = canvas 
+        self.ax = ax 
         return fig, ax, canvas 
-    
-    def draw_button_clicked(self, canvas,  ax):
-        """
-        Draw the graph on the canvas based on the provided equation and Xmin, Xmax values.
-
-        Parameters:
-            canvas: The Matplotlib FigureCanvas object for drawing the plot.
-            ax: The Matplotlib axes object for the plot.
-
-        Returns:
-            None
-        """ 
-        eqn_text = self.eqn_entry.text()
-        Xmin_text = self.x_min_entry.text()
-        Xmax_text = self.x_max_entry.text()
-        state, message = InputValidation(eqn_text, Xmin_text, Xmax_text).validate()
-        if state: 
-            self.show_popup(message, self)
-        else: 
-            Plotter(eqn_text, float(Xmin_text), float(Xmax_text), ax, canvas).plot()
-    
+        
     def switch_page(self, stacked_main, widget):
         """
         Switch the current page in the stacked widget to the specified widget.
@@ -468,14 +332,28 @@ class DarkThemeWidget(QWidget):
         popup.setWindowTitle("Error")
         popup.setText("\u274C " + message)
         popup.exec_()
+    
+    def draw_button_clicked(self, canvas,  ax):
+        """
+        Draw the graph on the canvas based on the provided equation and Xmin, Xmax values.
 
+        Parameters:
+            canvas: The Matplotlib FigureCanvas object for drawing the plot.
+            ax: The Matplotlib axes object for the plot.
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
+        Returns:
+            None
+        """ 
+        eqn_text = self.eqn_entry.text()
+        Xmin_text = self.x_min_entry.text()
+        Xmax_text = self.x_max_entry.text()
+        state, message = self.viewModel.validate_input(eqn_text, Xmin_text, Xmax_text)
+        if state: 
+            self.show_popup(message, self)
+        else: 
+            self.ax.cla()   
+            x, y = self.viewModel.get_plot_xys(eqn_text, float(Xmin_text), float(Xmax_text))
+            self.ax.plot(x, y, color='y')
+            self.canvas.draw()
 
-    window_width = 800  
-    widget = DarkThemeWidget(window_width)
-    widget.show()
-
-    sys.exit(app.exec_())
 

@@ -67,6 +67,9 @@ If you need further assistance on how to use the application or encounter any is
 <img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/9803d88c-2e29-4305-bd26-0390e98be49b" width="400" height="400">
 <img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/0fbbbef5-114e-4683-85f6-d8d6fbab1714" width="400" height="400">
 <img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/9006811a-1cec-42d0-a495-05a8cbf39748" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/33fb35a3-827f-4200-979f-ce6a9249515e" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/ce7723de-c3a9-49a8-ad5e-a47c5beb48c5" width="400" height="400">
+
 
 
 

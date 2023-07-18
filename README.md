@@ -28,7 +28,7 @@ Install the required dependencies using the following command:
 
 ## How to Use
 
-1. Run the application by executing the script. A window will appear with the dark-themed user interface.
+1. Run the application by executing the script "app.py".
 
 2. Enter the equation of the function in the "Equation" field. The supported operators are +, -, /, *, and ^ for exponentiation.
 

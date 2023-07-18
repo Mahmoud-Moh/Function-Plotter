@@ -59,4 +59,8 @@ Install the required dependencies using the following command:
 If you need further assistance on how to use the application or encounter any issues, you can refer to the "Instructions" page. It contains important guidelines and examples for valid and invalid functions.
 
 ## Successful Testcases 
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/eb210218-bd1d-4ed7-904d-1a7ad219a5c7" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/1dac3810-9e14-4ea3-a57b-e243da1219b1" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/ae1150d5-46da-4870-9ea3-6d05a660ae0e" width="400" height="400">
+
 

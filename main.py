@@ -11,14 +11,21 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 
-def show_popup(message):
-    popup = QMessageBox()
-    popup.setWindowTitle("Error")
-    popup.setText("\u274C " + message)
-    popup.exec_()
+
 
 class InputValidation: 
     def __init__(self, eqn, Xmin, Xmax): 
+        """
+        Initialize the InputValidation object.
+
+        Parameters:
+            eqn (str): The input equation.
+            Xmin (str): The minimum value of X.
+            Xmax (str): The maximum value of X.
+
+        Returns:
+            None
+        """
         self.eqn = eqn 
         self.Xmin = Xmin 
         self.Xmax = Xmax
@@ -51,8 +58,6 @@ class InputValidation:
         """
         This function validates Equation.
 
-        Parameters:
-
         Returns:
             int: 0 if ok, 1 if exception happened
         """
@@ -63,7 +68,15 @@ class InputValidation:
             return 1, "Enter Function correctly, click the i button to read the guidelines."
         return 0, None
     
-    def validate(self): 
+    def validate(self):
+        """
+        Validate the equation and numbers.
+
+        Returns:
+            tuple: A tuple containing:
+                int: 0 if validation is successful, 1 if an exception occurred.
+                str: An error message if 1 is returned, containing the message to show to the user.
+        """ 
         state1, message1 = self.validate_eqn()
         state2, message2 = self.validate_numbers()
 
@@ -75,7 +88,20 @@ class InputValidation:
             return 0, None 
 
 class Plotter: 
-    def __init__(self, eqn, Xmin, Xmax, ax, canvas): 
+    def __init__(self, eqn, Xmin, Xmax, ax, canvas):
+        """
+        Initialize the Plotter object.
+
+        Parameters:
+            eqn (str): The input equation.
+            Xmin (str): The minimum value of X.
+            Xmax (str): The maximum value of X.
+            ax: The axes object for plotting.
+            canvas: The canvas for drawing the plot.
+
+        Returns:
+            None
+        """ 
         self.no_of_points = 100
         self.eqn = eqn
         self.eqn = self.eqn.replace("x^", "x**")    
@@ -83,7 +109,13 @@ class Plotter:
         self.canvas = canvas
         self.points_x = np.linspace(Xmin, Xmax, self.no_of_points)
     
-    def plot(self): 
+    def plot(self):
+        """
+        Plot the graph of the equation.
+
+        Returns:
+            None
+        """ 
         self.ax.cla()
         y = [0] * self.no_of_points
         for i in range(self.no_of_points): 
@@ -365,6 +397,15 @@ class DarkThemeWidget(QWidget):
         self.setLayout(sidebar_main)
     
     def form_plotter(self): 
+        """
+        Create a plotter with a customized background color and axis styles.
+
+        Returns:
+            tuple: A tuple containing:
+                Figure: The Matplotlib figure object for the plot.
+                Axes: The Matplotlib axes object for the plot.
+                FigureCanvas: The Matplotlib FigureCanvas object for the plot.
+        """
         fig = plt.figure(facecolor='none') 
         canvas = FigureCanvas(fig)
         ax = fig.add_subplot(111)
@@ -379,24 +420,60 @@ class DarkThemeWidget(QWidget):
         canvas.setStyleSheet("background-color: transparent;")
         return fig, ax, canvas 
     
-    def draw_button_clicked(self, canvas,  ax): 
+    def draw_button_clicked(self, canvas,  ax):
+        """
+        Draw the graph on the canvas based on the provided equation and Xmin, Xmax values.
+
+        Parameters:
+            canvas: The Matplotlib FigureCanvas object for drawing the plot.
+            ax: The Matplotlib axes object for the plot.
+
+        Returns:
+            None
+        """ 
         eqn_text = self.eqn_entry.text()
         Xmin_text = self.x_min_entry.text()
         Xmax_text = self.x_max_entry.text()
         state, message = InputValidation(eqn_text, Xmin_text, Xmax_text).validate()
         if state: 
-            show_popup(message)
+            self.show_popup(message, self)
         else: 
             Plotter(eqn_text, float(Xmin_text), float(Xmax_text), ax, canvas).plot()
     
-    def switch_page(self, stacked_main, widget): 
+    def switch_page(self, stacked_main, widget):
+        """
+        Switch the current page in the stacked widget to the specified widget.
+
+        Parameters:
+            stacked_main: The QStackedWidget containing multiple pages.
+            widget: The widget to be displayed.
+
+        Returns:
+            None
+        """ 
         stacked_main.setCurrentWidget(widget)
+    
+    def show_popup(self, message, parent):
+        """
+        Display a popup message box with an error icon.
+
+        Parameters:
+            message (str): The message to be displayed in the popup.
+            parent: The parent widget for the popup.
+
+        Returns:
+            None
+        """
+        popup = QMessageBox(parent)
+        popup.setWindowTitle("Error")
+        popup.setText("\u274C " + message)
+        popup.exec_()
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    window_width = 800  # Specify the desired width of the window
+    window_width = 800  
     widget = DarkThemeWidget(window_width)
     widget.show()
 

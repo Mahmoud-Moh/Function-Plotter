@@ -1,6 +1,6 @@
 # Plotter Application with PySide2 and Matplotlib
 
-![Plotter](plotter.png)
+![Plotter]([https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/1dbf36a8-5945-491e-856f-2b339e362dce](https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/f0de69c8-aefa-4175-9a7c-c2930a614be3))
 
 ## Introduction
 
@@ -57,3 +57,6 @@ Install the required dependencies using the following command:
 ## Instructions
 
 If you need further assistance on how to use the application or encounter any issues, you can refer to the "Instructions" page. It contains important guidelines and examples for valid and invalid functions.
+
+## Successful Testcases 
+

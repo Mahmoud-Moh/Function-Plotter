@@ -1,6 +1,6 @@
 # Plotter Application with PySide2 and Matplotlib
 
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/554c61e4-2a4e-4e04-927a-4de3cb88e9bb" width="600" height="600">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/e2e9ac68-cc2a-4842-a08b-aa2e943ca357" width="600" height="600">
 
 ## Introduction
 
@@ -59,16 +59,15 @@ Install the required dependencies using the following command:
 If you need further assistance on how to use the application or encounter any issues, you can refer to the "Instructions" page. It contains important guidelines and examples for valid and invalid functions.
 
 ## Working Examples 
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/eb210218-bd1d-4ed7-904d-1a7ad219a5c7" width="400" height="400">
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/1dac3810-9e14-4ea3-a57b-e243da1219b1" width="400" height="400">
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/ae1150d5-46da-4870-9ea3-6d05a660ae0e" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/78cf2915-39dc-4f1a-a5a5-a086960dc72d" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/a3ebe2dc-3026-4724-91d7-5e1c13125d95" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/05aacc8b-de30-45b7-9620-a1167fc05162" width="400" height="400">
 
 ## Wrong Examples
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/9803d88c-2e29-4305-bd26-0390e98be49b" width="400" height="400">
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/0fbbbef5-114e-4683-85f6-d8d6fbab1714" width="400" height="400">
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/9006811a-1cec-42d0-a495-05a8cbf39748" width="400" height="400">
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/33fb35a3-827f-4200-979f-ce6a9249515e" width="400" height="400">
-<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/ce7723de-c3a9-49a8-ad5e-a47c5beb48c5" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/cab6ca71-c160-4c8a-9014-0b33f8427296" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/cfea462f-9803-4ef2-bdc0-cf8ca49327d1" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/a7ec1217-37ba-410a-80ad-544f2122246f" width="400" height="400">
+<img src="https://github.com/Mahmoud-Moh/Function-Plotter/assets/69478720/248d2af1-398d-4458-b84e-b52c80243657)" width="400" height="400">
 
 
 
